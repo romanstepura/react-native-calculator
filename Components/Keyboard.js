@@ -13,7 +13,7 @@ export default class Keyboard extends Component {
             <Button character="9" />
           </View>
           <View style={styles.row}>
-            <Button character="4" />
+            <Button character="3" />
             <Button character="5" />
             <Button character="6" />
           </View>
