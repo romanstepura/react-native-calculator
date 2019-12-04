@@ -29,6 +29,7 @@ const App: () => React$Node = () => {
     <View>
       <Text>Hello React Native</Text>
       <Text>Hello React Vasya</Text>
+      <Text>Hello Roma</Text>
     </View>
   );
 };
