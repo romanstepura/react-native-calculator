@@ -16,13 +16,11 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
+import Keyboard from './Components/Keyboard';
 const App: () => React$Node = () => {
   return (
     <View>
-      <Text>Hello React Native</Text>
-      <Text>Hello React Vasya</Text>
-      <Text>Hello Roma</Text>
+      <Keyboard />
     </View>
   );
 };
