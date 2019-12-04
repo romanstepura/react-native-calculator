@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View, Button} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
 
 export default class Keyboard extends Component {
   render() {
@@ -12,3 +12,4 @@ export default class Keyboard extends Component {
     );
   }
 }
+

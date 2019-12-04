@@ -10,20 +10,77 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import Keyboard from './Components/Keyboard';
 
-export class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-  render() {
-    return (
-      <View>
-        <Keyboard />
-      </View>
-    );
-  }
-}
+const App: () => React$Node = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.result} />
+      <View style={styles.calculation} />
+      <View style={styles.buttons}>
+        <View style={styles.nutmegs}>
+          <View style={styles.row}>
+            <Button title="0" />
+            <Button title="0" />
+            <Button title="0" />
+          </View>
+          <View style={styles.row}>
+            <Button title="0" />
+            <Button title="0" />
+            <Button title="0" />
+          </View>
+          <View style={styles.row}>
+            <Button title="0" />
+            <Button title="0" />
+            <Button title="0" />
+          </View>
+          <View style={styles.row}>
+            <Button title="0" />
+            <Button title="0" />
+            <Button title="0" />
+          </View>
+        </View>
+        <View style={styles.operations}>
+          <Button title="+"></Button>
+          <Button title="+"></Button>
+          <Button title="+"></Button>
+          <Button title="+"></Button>
 
-const styles = StyleSheet.create();
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  row:{
+    flexDirection: 'row',
+    flex:1,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  result: {
+    flex: 1,
+    backgroundColor: 'red',
+  },
+  calculation: {
+    flex: 1,
+    backgroundColor: 'green',
+  },
+  buttons: {
+    flexGrow: 5,
+    flexDirection: 'row',
+  },
+  nutmegs: {
+    flex: 3,
+    backgroundColor: 'yellow',
+  },
+  operations: {
+    flex: 1,
+    justifyContent: 'space-around',
+    backgroundColor: 'black',
+  },
+});
 
 export default App;
