@@ -4,30 +4,18 @@ import Button from './Button';
 
 export default class Keyboard extends Component {
   render() {
+    let rows = [];
+    let nums = [[7, 8, 9], [4, 5, 6],[1, 2, 3],  ['.', 0, '=']];
+    for (let i = 0; i < 4; i++){
+      let row = [];
+      for (let j = 0; j < 3; j++) {
+        row.push(<Button character={nums[i][j]} />);
+      }
+      rows.push(<View style={styles.row}>{row}</View>);
+    }
     return (
       <View style={styles.buttons}>
-        <View style={styles.numberButtons}>
-          <View style={styles.row}>
-            <Button character="7" />
-            <Button character="8" />
-            <Button character="9" />
-          </View>
-          <View style={styles.row}>
-            <Button character="3" />
-            <Button character="5" />
-            <Button character="6" />
-          </View>
-          <View style={styles.row}>
-            <Button character="1" />
-            <Button character="2" />
-            <Button character="3" />
-          </View>
-          <View style={styles.row}>
-            <Button character="0" />
-            <Button character="." />
-            <Button character="=" />
-          </View>
-        </View>
+        <View style={styles.numberButtons}>{rows}</View>
         <View style={styles.operations}>
           <Button character="C" />
           <Button character="+" />
