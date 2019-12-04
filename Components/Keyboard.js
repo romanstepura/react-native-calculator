@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {View, Button} from 'react-native';
 
 export default class Keyboard extends Component {
   render() {
     return (
       <View>
-        <Text>Hello, Keyboard!</Text>
+        <View>
+          <Button title="1" />
+        </View>
       </View>
     );
   }

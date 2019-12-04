@@ -9,13 +9,20 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import Keyboard from './Components/Keyboard';
-const App: () => React$Node = () => {
-  return (
-    <View>
-      <Keyboard />
-    </View>
-  );
-};
+
+export class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  render() {
+    return (
+      <View>
+        <Keyboard />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create();
 
