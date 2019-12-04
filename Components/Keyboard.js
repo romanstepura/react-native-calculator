@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttons: {
-    flexGrow: 5,
+    flexGrow: 3,
     flexDirection: 'row',
   },
 });
