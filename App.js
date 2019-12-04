@@ -43,10 +43,11 @@ const App: () => React$Node = () => {
           </View>
         </View>
         <View style={styles.operations}>
-          <Button title="+"></Button>
-          <Button title="+"></Button>
-          <Button title="+"></Button>
-          <Button title="+"></Button>
+          <Button />
+          <Button />
+          <Button />
+          <Button />
+          <Button />
 
         </View>
       </View>
@@ -101,8 +102,8 @@ const styles = StyleSheet.create({
   operations: {
     flex: 1,
     justifyContent: 'space-around',
-    backgroundColor: 'black',
-    alignItems: 'stretch',
+    backgroundColor: 'white',
+    alignItems: 'center',
   },
 });
 
