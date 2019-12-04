@@ -28,6 +28,7 @@ const App: () => React$Node = () => {
   return (
     <View>
       <Text>Hello React Native</Text>
+      <Text>Hello React Vasya</Text>
     </View>
   );
 };
