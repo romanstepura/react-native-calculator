@@ -13,16 +13,16 @@ export default class Keyboard extends Component {
       }
       rows.push(<View style={styles.row}>{row}</View>);
     }
+
+    let operation = ['+', '-', '*', '/'];
+    let ops = [];
+    for (let k = 0; k < 4; k++) {
+      ops.push(<Button character={operation[k]} />);
+    }
     return (
       <View style={styles.buttons}>
         <View style={styles.numberButtons}>{rows}</View>
-        <View style={styles.operations}>
-          <Button character="C" />
-          <Button character="+" />
-          <Button character="-" />
-          <Button character="/" />
-          <Button character="*" />
-        </View>
+        <View style={styles.operations}>{ops}</View>
       </View>
     );
   }
