@@ -5,8 +5,8 @@
  * @format
  * @flow
  */
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text} from 'react-native';
 import Keyboard from './Components/Keyboard';
 import Display from './Components/Display';
 
@@ -14,19 +14,28 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      resultText: '',
+      resultText: '0',
     };
     this.operations = ['C', '+', '-', '*', '/'];
+    console.log(useState.toString());
   }
-  calculatorResult() {
-    const text = this.state.resultText;
+  calculatorResult(value) {
+    this.setState({
+      calculationText: eval(value),
+    });
   }
   buttonPressed = text => {
+    if (text === '=') {
+      return (
+        this.validate(this.state.resultText) &&
+        this.calculatorResult(this.state.resultText)
+      );
+    }
     if (typeof text === 'string' && text !== '=') {
       this.operate(text);
     }
     if (text === '=') {
-      return this.calculatorResult();
+      return this.calculatorResult(this.state.resultText);
     }
     this.setState({
       resultText: this.state.resultText + text,
@@ -41,6 +50,7 @@ class App extends React.Component {
         this.setState({
           resultText: text.join(''),
         });
+        break;
       case '+':
       case '-':
       case '*':
@@ -57,14 +67,29 @@ class App extends React.Component {
         });
     }
   };
+  validate(value) {
+    switch (value.slice(-1)) {
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        return false;
+    }
+    return true;
+  }
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.result}>
           <Display currentDisplay={this.state.resultText} />
         </View>
-        <View style={styles.calculation} />
+        <View style={styles.calculation}>
+          <Text style={styles.calculationText}>
+            {this.state.calculationText}
+          </Text>
+        </View>
         <Keyboard
+          app={this}
           keyboardClick={this.buttonPressed}
           operate={this.operate}
           operations={this.operations}
@@ -85,7 +110,13 @@ const styles = StyleSheet.create({
   },
   calculation: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: '#f6ffe6',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    textAlign: 'right',
+  },
+  calculationText: {
+    fontSize: 30,
   },
 });
 

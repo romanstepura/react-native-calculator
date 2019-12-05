@@ -12,7 +12,7 @@ export default class Keyboard extends Component {
           <Button
             key={nums[i][j].toString()}
             character={nums[i][j]}
-            buttonClick={this.props.keyboardClick}
+            buttonClick={this.props.app.buttonPressed}
           />,
         );
       }
@@ -23,7 +23,7 @@ export default class Keyboard extends Component {
     for (let k = 0; k < this.props.operations.length; k++) {
       ops.push(
         <Button
-          key={this.props.operations[k].toString()}
+          key={this.props.operations[k]}
           character={this.props.operations[k]}
           buttonClick={this.props.keyboardClick}
         />,

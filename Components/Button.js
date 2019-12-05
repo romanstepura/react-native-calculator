@@ -3,7 +3,9 @@ import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
 export default class Button extends Component {
   toggleStyle = value => {
-    if (typeof value === 'number') {
+    if (value === '.' || value === '=') {
+      return styles.btnText;
+    } else if (typeof value === 'number') {
       return styles.btnText;
     } else {
       return styles.white;
