@@ -39,7 +39,9 @@ class App extends React.Component {
     return true;
   }
   buttonPressed = text => {
-    console.log(text);
+    if (typeof text === 'string' && text !== '=') {
+      return this.operate(text);
+    }
     if (text === '=') {
       return this.validate() && this.calculatorResult();
     }
