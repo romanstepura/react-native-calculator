@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Button from './Button';
-import Display from './Display';
-
 export default class Keyboard extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     let rows = [];
     let nums = [[7, 8, 9], [4, 5, 6], [1, 2, 3], ['.', 0, '=']];
@@ -14,23 +9,24 @@ export default class Keyboard extends Component {
       let row = [];
       for (let j = 0; j < 3; j++) {
         row.push(
-          <TouchableOpacity
-            onPress={() => this.props.keyboardClick(nums[i][j])}>
-            <Text style={styles.btnText}>{nums[i][j]}</Text>
-          </TouchableOpacity>,
+          <Button
+            key={nums[i][j].toString()}
+            character={nums[i][j]}
+            buttonClick={this.props.keyboardClick}
+          />,
         );
       }
       rows.push(<View style={styles.row}>{row}</View>);
     }
-
+    let operations = ['+', '-', '*', '/'];
     let ops = [];
-    for (let k = 0; k < 5; k++) {
+    for (let k = 0; k < 4; k++) {
       ops.push(
-        <TouchableOpacity
-          onPress={() => this.props.operate(this.props.operations[k])}
-          style={styles.operations}>
-          <Text style={styles.white}>{this.props.operations[k]}</Text>
-        </TouchableOpacity>,
+        <Button
+          key={operations[k].toString()}
+          character={operations[k]}
+          buttonClick={this.props.keyboardClick}
+        />,
       );
     }
     return (
@@ -42,15 +38,6 @@ export default class Keyboard extends Component {
   }
 }
 const styles = StyleSheet.create({
-  white: {
-    color: 'white',
-    fontSize: 30,
-    padding: 5,
-  },
-  btnText: {
-    fontSize: 30,
-    padding: 5,
-  },
   row: {
     flexDirection: 'row',
     flex: 1,

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import Keyboard from './Keyboard';
+import {StyleSheet, Text} from 'react-native';
 
 export default class Display extends Component {
   render() {
@@ -10,5 +9,11 @@ export default class Display extends Component {
 const styles = StyleSheet.create({
   displayText: {
     fontSize: 30,
+    textAlign: 'right',
+  },
+  white: {
+    color: 'white',
+    fontSize: 30,
+    padding: 5,
   },
 });
