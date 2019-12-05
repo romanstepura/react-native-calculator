@@ -14,7 +14,8 @@ export default class Keyboard extends Component {
       let row = [];
       for (let j = 0; j < 3; j++) {
         row.push(
-          <TouchableOpacity onPress={() => this.props.keyboardClick(nums[i][j])}>
+          <TouchableOpacity
+            onPress={() => this.props.keyboardClick(nums[i][j])}>
             <Text style={styles.btnText}>{nums[i][j]}</Text>
           </TouchableOpacity>,
         );
@@ -22,14 +23,13 @@ export default class Keyboard extends Component {
       rows.push(<View style={styles.row}>{row}</View>);
     }
 
-    let operation = ['+', '-', '*', '/'];
     let ops = [];
-    for (let k = 0; k < 4; k++) {
+    for (let k = 0; k < 5; k++) {
       ops.push(
         <TouchableOpacity
-          onPress={() => this.buttonPressed(operation[k])}
+          onPress={() => this.props.operate(this.props.operations[k])}
           style={styles.operations}>
-          <Text style={styles.white}>{operation[k]}</Text>
+          <Text style={styles.white}>{this.props.operations[k]}</Text>
         </TouchableOpacity>,
       );
     }
