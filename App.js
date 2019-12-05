@@ -17,15 +17,14 @@ class App extends React.Component {
       resultText: '',
     };
     this.operations = ['C', '+', '-', '*', '/'];
-
-    console.log(this.state.resultText);
   }
   calculatorResult() {
     const text = this.state.resultText;
-
   }
   buttonPressed = text => {
-    console.log(text);
+    if (typeof text === 'string' && text !== '=') {
+      this.operate(text);
+    }
     if (text === '=') {
       return this.calculatorResult();
     }
@@ -65,7 +64,11 @@ class App extends React.Component {
           <Display currentDisplay={this.state.resultText} />
         </View>
         <View style={styles.calculation} />
-        <Keyboard keyboardClick={this.buttonPressed} />
+        <Keyboard
+          keyboardClick={this.buttonPressed}
+          operate={this.operate}
+          operations={this.operations}
+        />
       </View>
     );
   }
