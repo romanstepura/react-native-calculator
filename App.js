@@ -16,6 +16,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       resultText: '',
+      calculationText: '',
     };
     this.operations = ['C', '+', '-', '*', '/'];
 
@@ -23,12 +24,25 @@ class App extends React.Component {
   }
   calculatorResult() {
     const text = this.state.resultText;
-
+    this.setState({
+      calculationText: eval(text),
+    });
+  }
+  validate() {
+    const text = this.state.resultText;
+    switch (text.slice(-1)) {
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        return false;
+    }
+    return true;
   }
   buttonPressed = text => {
     console.log(text);
     if (text === '=') {
-      return this.calculatorResult();
+      return this.validate() && this.calculatorResult();
     }
     this.setState({
       resultText: this.state.resultText + text,
@@ -65,8 +79,14 @@ class App extends React.Component {
         <View style={styles.result}>
           <Display currentDisplay={this.state.resultText} />
         </View>
-        <View style={styles.calculation} />
-        <Keyboard keyboardClick={this.buttonPressed} operate={this.operate} operations={this.operations} />
+        <View style={styles.calculation}>
+          <Text style={styles.calculation}>{this.state.calculationText}</Text>
+        </View>
+        <Keyboard
+          keyboardClick={this.buttonPressed}
+          operate={this.operate}
+          operations={this.operations}
+        />
       </View>
     );
   }
@@ -83,6 +103,7 @@ const styles = StyleSheet.create({
   calculation: {
     flex: 1,
     backgroundColor: '#f6ffe6',
+    fontSize: 30,
   },
 });
 
