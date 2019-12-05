@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet,TouchableOpacity, Text} from 'react-native';
 import Button from './Button';
 import Display from './Display';
 
@@ -24,7 +24,7 @@ export default class Keyboard extends Component {
       let row = [];
       for (let j = 0; j < 3; j++) {
         row.push(
-          <TouchableOpacity onPress={() =>this.buttonPressed(nums[i][j])}>
+          <TouchableOpacity onPress={() => this.buttonPressed(nums[i][j])}>
             <Text style={styles.btnText}>{nums[i][j]}</Text>
           </TouchableOpacity>,
         );
