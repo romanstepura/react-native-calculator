@@ -6,13 +6,17 @@
  * @flow
  */
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import Keyboard from './Components/Keyboard';
+import Display from './Components/Display';
 
 const App: () => React$Node = () => {
+
   return (
     <View style={styles.container}>
-      <View style={styles.result} />
+      <View style={styles.result}>
+        <Text style={styles.result}>{<Display />}</Text>
+      </View>
       <View style={styles.calculation} />
       <Keyboard />
     </View>
