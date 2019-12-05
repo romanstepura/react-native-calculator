@@ -17,7 +17,7 @@ class App extends React.Component {
       resultText: '',
       calculationText: '',
     };
-    this.operations = ['C', '+', '-', '*', ''];
+    this.operations = ['C', '+', '-', '*', '/'];
 
     console.log(this.state.resultText);
   }
