@@ -5,8 +5,8 @@ import Button from './Button';
 export default class Keyboard extends Component {
   render() {
     let buttonRows = [];
-    let keyboardNumbers = [[7, 8, 9], [4, 5, 6],[1, 2, 3],  ['.', 0, '=']];
-    for (let i = 0; i < 4; i++){
+    let keyboardNumbers = [[7, 8, 9], [4, 5, 6], [1, 2, 3], ['.', 0, '=']];
+    for (let i = 0; i < 4; i++) {
       let buttonRow = [];
       for (let j = 0; j < 3; j++) {
         buttonRow.push(<Button character={keyboardNumbers[i][j]} />);
