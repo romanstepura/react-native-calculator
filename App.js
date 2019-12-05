@@ -5,7 +5,7 @@
  * @format
  * @flow
  */
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import Keyboard from './Components/Keyboard';
 import Display from './Components/Display';
@@ -14,28 +14,34 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      resultText: '0',
+      resultText: '',
+      calculationText: '',
     };
     this.operations = ['C', '+', '-', '*', '/'];
-    console.log(useState.toString());
+
+    console.log(this.state.resultText);
   }
-  calculatorResult(value) {
+  calculatorResult() {
+    const text = this.state.resultText;
     this.setState({
-      calculationText: eval(value),
+      calculationText: eval(text),
     });
   }
+  validate() {
+    const text = this.state.resultText;
+    switch (text.slice(-1)) {
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        return false;
+    }
+    return true;
+  }
   buttonPressed = text => {
+    console.log(text);
     if (text === '=') {
-      return (
-        this.validate(this.state.resultText) &&
-        this.calculatorResult(this.state.resultText)
-      );
-    }
-    if (typeof text === 'string' && text !== '=') {
-      this.operate(text);
-    }
-    if (text === '=') {
-      return this.calculatorResult(this.state.resultText);
+      return this.validate() && this.calculatorResult();
     }
     this.setState({
       resultText: this.state.resultText + text,
@@ -50,7 +56,6 @@ class App extends React.Component {
         this.setState({
           resultText: text.join(''),
         });
-        break;
       case '+':
       case '-':
       case '*':
@@ -62,21 +67,19 @@ class App extends React.Component {
         if (this.state.text === '') {
           return;
         }
-        this.setState({
-          resultText: this.state.resultText + operation,
-        });
+        if (operation === 'C') {
+          let text = this.state.resultText.split('');
+          text.pop();
+          this.setState({
+            resultText: text.join(''),
+          });
+        } else {
+          this.setState({
+            resultText: this.state.resultText + operation,
+          });
+        }
     }
   };
-  validate(value) {
-    switch (value.slice(-1)) {
-      case '+':
-      case '-':
-      case '*':
-      case '/':
-        return false;
-    }
-    return true;
-  }
   render() {
     return (
       <View style={styles.container}>
@@ -89,7 +92,6 @@ class App extends React.Component {
           </Text>
         </View>
         <Keyboard
-          app={this}
           keyboardClick={this.buttonPressed}
           operate={this.operate}
           operations={this.operations}
