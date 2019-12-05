@@ -18,7 +18,7 @@ export default class Keyboard extends Component {
       }
       rows.push(<View style={styles.row}>{row}</View>);
     }
-    let operations = ['+', '-', '*', '/'];
+
     let ops = [];
     for (let k = 0; k < 4; k++) {
       ops.push(

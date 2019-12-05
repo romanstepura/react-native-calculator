@@ -16,14 +16,47 @@ class App extends React.Component {
     this.state = {
       resultText: '',
     };
+    this.operations = ['C', '+', '-', '*', '/'];
+
     console.log(this.state.resultText);
+  }
+  calculatorResult() {
+    const text = this.state.resultText;
+
   }
   buttonPressed = text => {
     console.log(text);
+    if (text === '=') {
+      return this.calculatorResult();
+    }
     this.setState({
       resultText: this.state.resultText + text,
     });
     console.log(this.resultText);
+  };
+  operate = operation => {
+    switch (operation) {
+      case 'C':
+        let text = this.state.resultText.split('');
+        text.pop();
+        this.setState({
+          resultText: text.join(''),
+        });
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        const lastChar = this.state.resultText.split('').pop();
+        if (this.operations.indexOf(lastChar) > 0) {
+          return;
+        }
+        if (this.state.text === '') {
+          return;
+        }
+        this.setState({
+          resultText: this.state.resultText + operation,
+        });
+    }
   };
   render() {
     return (
