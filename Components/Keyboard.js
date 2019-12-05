@@ -4,8 +4,8 @@ import Button from './Button';
 import Display from './Display';
 
 export default class Keyboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       resultText: '',
     };
@@ -13,7 +13,7 @@ export default class Keyboard extends Component {
   buttonPressed(text) {
     console.log(text);
     this.setState({
-      resultText: Keyboard.state.resultText + text,
+      resultText: this.state.resultText + text,
     });
   }
 
@@ -24,7 +24,7 @@ export default class Keyboard extends Component {
       let row = [];
       for (let j = 0; j < 3; j++) {
         row.push(
-          <TouchableOpacity onPress={() =>this.buttonPressed(nums[i][j])}>
+          <TouchableOpacity onPress={() => this.buttonPressed(nums[i][j])}>
             <Text style={styles.btnText}>{nums[i][j]}</Text>
           </TouchableOpacity>,
         );

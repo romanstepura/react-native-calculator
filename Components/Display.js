@@ -4,11 +4,11 @@ import Keyboard from './Keyboard';
 
 export default class Display extends Component {
   render() {
-    return <Text style={styles.displayText}>{22}</Text>;
+    return <Text style={styles.displayText}>{this.props.currentDisplay}</Text>;
   }
 }
 const styles = StyleSheet.create({
-  displayText:{
+  displayText: {
     fontSize: 30,
   },
 });

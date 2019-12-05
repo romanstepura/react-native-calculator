@@ -11,11 +11,10 @@ import Keyboard from './Components/Keyboard';
 import Display from './Components/Display';
 
 const App: () => React$Node = () => {
-
   return (
     <View style={styles.container}>
       <View style={styles.result}>
-        <Text style={styles.result}>{<Display />}</Text>
+        <Display currentDisplay="3" />
       </View>
       <View style={styles.calculation} />
       <Keyboard />
