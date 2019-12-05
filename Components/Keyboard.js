@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {View, StyleSheet,TouchableOpacity, Text} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Button from './Button';
 import Display from './Display';
 
 export default class Keyboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       resultText: '',
     };
@@ -48,6 +48,7 @@ export default class Keyboard extends Component {
         <View style={styles.numberButtons}>{rows}</View>
         <View style={styles.operations}>{ops}</View>
       </View>
+
     );
   }
 }

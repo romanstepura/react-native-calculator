@@ -14,7 +14,7 @@ const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
       <View style={styles.result}>
-        <Display currentDispaly="22" />
+        <Display currentDisplay="3" />
       </View>
       <View style={styles.calculation} />
       <Keyboard />
