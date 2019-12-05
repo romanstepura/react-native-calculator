@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity, Text } from 'react-native';
 
 export default class Button extends Component {
   render() {
     return (
       <TouchableOpacity>
-        <Text style={styles.btnText}>{this.props.character}</Text>
+        <Text>{this.state.resultText}</Text>
       </TouchableOpacity>
     );
   }
 }
-const styles = StyleSheet.create({
-  btnText: {
-    fontSize: 30,
-    padding: 5,
-  },
-});
