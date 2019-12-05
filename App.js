@@ -57,6 +57,7 @@ class App extends React.Component {
         this.setState({
           resultText: text.join(''),
         });
+        // eslint-disable-next-line no-fallthrough
       case '+':
       case '-':
       case '*':
@@ -67,10 +68,19 @@ class App extends React.Component {
         }
         if (this.state.text === '') {
           return;
-        }
+        }if (operation === 'C'){
+        let text = this.state.resultText.split('');
+        text.pop();
+        this.setState({
+          resultText: text.join(''),
+        });
+      }else{
         this.setState({
           resultText: this.state.resultText + operation,
         });
+      }
+
+
     }
   };
   render() {
