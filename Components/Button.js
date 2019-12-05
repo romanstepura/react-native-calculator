@@ -5,7 +5,7 @@ export default class Button extends Component {
   render() {
     return (
       <TouchableOpacity>
-        <Text>{this.state.resultText}</Text>
+        <Text>{this.props.character}</Text>
       </TouchableOpacity>
     );
   }

@@ -10,17 +10,33 @@ import {StyleSheet, View, Text} from 'react-native';
 import Keyboard from './Components/Keyboard';
 import Display from './Components/Display';
 
-const App: () => React$Node = () => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.result}>
-        <Display currentDisplay="3" />
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      resultText: '9',
+    };
+    console.log(this.state.resultText);
+  }
+  buttonPressed(text) {
+    console.log(text);
+    this.setState({
+      resultText: this.state.resultText + text,
+    });
+    console.log(this.resultText);
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.result}>
+          <Display currentDisplay={this.state.resultText} />
+        </View>
+        <View style={styles.calculation} />
+        <Keyboard keyboardClick={this.buttonPressed} />
       </View>
-      <View style={styles.calculation} />
-      <Keyboard />
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
